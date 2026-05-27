@@ -1,0 +1,259 @@
+/* 
+   Freshora Mart - Full Responsive & Premium "Sooper" Styles 
+   This file contains overrides for mobile/tablet layouts and premium aesthetic upgrades.
+*/
+
+/* 
+========================================
+  1. PREMIUM "SOOPER" ENHANCEMENTS
+======================================== 
+*/
+
+/* Product Cards */
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.12), 0 10px 15px rgba(6, 78, 59, 0.05);
+  border-color: var(--sage-light, #16a34a);
+  z-index: 10;
+}
+
+.product-card .add-btn {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card .add-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.product-card:hover .add-btn::before {
+  left: 100%;
+}
+
+/* Image zoom effect on card hover */
+.product-image-wrapper {
+  overflow: hidden;
+  border-radius: 8px; /* matching internal border radius */
+}
+
+.product-image {
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08);
+}
+
+/* Buttons */
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.cart-icon-btn, .nav-icon-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-icon-btn:hover {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); /* Gold glow */
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 
+========================================
+  2. TABLET RESPONSIVE (max-width: 1024px)
+======================================== 
+*/
+@media (max-width: 1024px) {
+  /* Hero Section constraints */
+  .hero {
+    gap: 2rem;
+    padding: 5rem 2rem;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-eyebrow {
+    justify-content: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-stats {
+    justify-content: center;
+  }
+  
+  .hero-image-wrapper {
+    margin-top: 2rem;
+    max-width: 80%;
+    margin-inline: auto;
+  }
+
+  .header-inner {
+    padding: 0 1.5rem;
+  }
+  
+  .shop-layout {
+    flex-direction: column;
+  }
+
+  .filter-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--line-strong, rgba(6, 78, 59, 0.2));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-category-list, .filter-sort-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-price-stack {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .filter-price-field {
+    flex: 1;
+  }
+}
+
+/* 
+========================================
+  3. MOBILE RESPONSIVE (max-width: 768px)
+======================================== 
+*/
+@media (max-width: 768px) {
+  /* HEADER & NAVIGATION */
+  .header-inner {
+    height: 70px;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+  
+  .brand-name {
+    font-size: 1.25rem;
+  }
+  
+  /* The normal nav links are hidden via Header.jsx class additions, but just in case */
+  .main-nav {
+    display: none;
+  }
+  
+  .main-nav.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--ink, #f0fdf4);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+  
+  .nav-link {
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--line, rgba(6,78,59,0.1));
+  }
+  
+  /* Hamburger Menu Toggle (Added to Header.jsx) */
+  .mobile-menu-btn {
+    display: flex;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text-1, #064e3b);
+  }
+  
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  
+  .nav-profile-group {
+    display: none !important; /* hide on small mobile screens to save space */
+  }
+
+  /* HOME PAGE */
+  .hero {
+    padding: 3rem 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  /* GRID ADJUSTMENTS */
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    padding: 1rem;
+  }
+  
+  .product-image-wrapper {
+    height: 140px;
+  }
+  
+  .product-card {
+    padding: 12px;
+  }
+  
+  .product-name {
+    font-size: 1rem;
+  }
+  
+  /* CART PANEL */
+  .cart-panel {
+    width: 100vw;
+  }
+  
+  .cart-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .cart-item-controls {
+    align-self: flex-end;
+    margin-top: -30px; /* pull controls up next to price */
+  }
+}
+
+/* Show Mobile Menu button only on Mobile */
+.mobile-menu-btn {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
