@@ -1,15 +1,4 @@
-/* 
-   Freshora Mart - Full Responsive & Premium "Sooper" Styles 
-   This file contains overrides for mobile/tablet layouts and premium aesthetic upgrades.
-*/
 
-/* 
-========================================
-  1. PREMIUM "SOOPER" ENHANCEMENTS
-======================================== 
-*/
-
-/* Product Cards */
 .product-card {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
@@ -41,10 +30,10 @@
   left: 100%;
 }
 
-/* Image zoom effect on card hover */
+
 .product-image-wrapper {
   overflow: hidden;
-  border-radius: 8px; /* matching internal border radius */
+  border-radius: 8px; 
 }
 
 .product-image {
@@ -66,21 +55,17 @@
 
 .cart-icon-btn:hover {
   transform: rotate(5deg) scale(1.1);
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); /* Gold glow */
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
 }
 
-/* Smooth Scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* 
-========================================
-  2. TABLET RESPONSIVE (max-width: 1024px)
-======================================== 
-*/
+ 
+
 @media (max-width: 1024px) {
-  /* Hero Section constraints */
   .hero {
     gap: 2rem;
     padding: 5rem 2rem;
@@ -138,11 +123,8 @@ html {
   }
 }
 
-/* 
-========================================
-  3. MOBILE RESPONSIVE (max-width: 768px)
-======================================== 
-*/
+ 
+
 @media (max-width: 768px) {
   /* HEADER & NAVIGATION */
   .header-inner {
@@ -155,7 +137,7 @@ html {
     font-size: 1.25rem;
   }
   
-  /* The normal nav links are hidden via Header.jsx class additions, but just in case */
+ 
   .main-nav {
     display: none;
   }
@@ -180,7 +162,7 @@ html {
     border-bottom: 1px solid var(--line, rgba(6,78,59,0.1));
   }
   
-  /* Hamburger Menu Toggle (Added to Header.jsx) */
+  
   .mobile-menu-btn {
     display: flex;
     background: transparent;
@@ -195,10 +177,9 @@ html {
   }
   
   .nav-profile-group {
-    display: none !important; /* hide on small mobile screens to save space */
+    display: none !important;
   }
 
-  /* HOME PAGE */
   .hero {
     padding: 3rem 1rem;
   }
@@ -213,7 +194,7 @@ html {
     align-items: center;
   }
 
-  /* GRID ADJUSTMENTS */
+  
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 12px;
@@ -232,7 +213,7 @@ html {
     font-size: 1rem;
   }
   
-  /* CART PANEL */
+  
   .cart-panel {
     width: 100vw;
   }
@@ -244,11 +225,11 @@ html {
   
   .cart-item-controls {
     align-self: flex-end;
-    margin-top: -30px; /* pull controls up next to price */
+    margin-top: -30px;
   }
 }
 
-/* Show Mobile Menu button only on Mobile */
+
 .mobile-menu-btn {
   display: none;
 }
