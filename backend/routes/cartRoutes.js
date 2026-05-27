@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware");
 const { getCart, addToCart, decreaseQuantity, removeFromCart, clearCart } = require("../controllers/cartController");
 
-// Apply authentication middleware to all cart routes
-router.use(authMiddleware);
+
+router.use(protect);
 
 router.get("/", getCart);
 router.post("/add", addToCart);
