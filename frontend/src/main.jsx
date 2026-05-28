@@ -1,6 +1,3 @@
-// src/main.jsx
-// This is the entry point for React.
-// It renders the <App /> component inside the <div id="root"> in index.html.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
