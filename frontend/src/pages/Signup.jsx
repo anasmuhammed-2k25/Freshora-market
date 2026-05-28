@@ -7,14 +7,25 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    if (password !== confirm) {
-      alert("Passwords do not match");
+    setErrors({});
+    
+    let tempErrors = {};
+    if (!username.trim()) tempErrors.username = "Username is required";
+    if (!password) tempErrors.password = "Password is required";
+    else if (password.length < 6) tempErrors.password = "Password must be at least 6 characters";
+    
+    if (password !== confirm) tempErrors.confirm = "Passwords do not match";
+
+    if (Object.keys(tempErrors).length > 0) {
+      setErrors(tempErrors);
       return;
     }
+
     setLoading(true);
     try {
       const res = await axios.post("/api/auth/signup", { username, password });
@@ -25,7 +36,7 @@ const Signup = () => {
       window.dispatchEvent(new Event("authChange"));
       navigate("/");
     } catch {
-      alert("Signup failed: Username might be taken");
+      setErrors({ form: "Signup failed: Username might be taken" });
     } finally {
       setLoading(false);
     }
@@ -88,18 +99,25 @@ const Signup = () => {
             <p>Join thousands of happy organic enthusiasts today</p>
           </div>
 
-          <form onSubmit={handleSignup} className="signup-form">
+          <form onSubmit={handleSignup} className="signup-form" noValidate>
+            {errors.form && (
+              <div style={{ padding: "10px", backgroundColor: "#fdecea", color: "#e74c3c", borderRadius: "5px", marginBottom: "15px", fontSize: "0.9rem" }}>
+                {errors.form}
+              </div>
+            )}
+            
             <div className="sf-group">
               <label htmlFor="username">Username</label>
               <input
                 id="username"
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => { setUsername(e.target.value); setErrors({...errors, username: ""}) }}
                 placeholder="Choose a username"
-                required
                 autoFocus
+                style={{ borderColor: errors.username ? "#e74c3c" : undefined }}
               />
+              {errors.username && <span style={{ color: "#e74c3c", fontSize: "0.85rem", marginTop: "6px", display: "block" }}>{errors.username}</span>}
             </div>
             
             <div className="sf-group">
@@ -108,10 +126,11 @@ const Signup = () => {
                 id="password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { setPassword(e.target.value); setErrors({...errors, password: ""}) }}
                 placeholder="••••••••"
-                required
+                style={{ borderColor: errors.password ? "#e74c3c" : undefined }}
               />
+              {errors.password && <span style={{ color: "#e74c3c", fontSize: "0.85rem", marginTop: "6px", display: "block" }}>{errors.password}</span>}
             </div>
 
             <div className="sf-group">
@@ -120,13 +139,14 @@ const Signup = () => {
                 id="confirm"
                 type="password"
                 value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
+                onChange={(e) => { setConfirm(e.target.value); setErrors({...errors, confirm: ""}) }}
                 placeholder="••••••••"
-                required
+                style={{ borderColor: errors.confirm ? "#e74c3c" : undefined }}
               />
+              {errors.confirm && <span style={{ color: "#e74c3c", fontSize: "0.85rem", marginTop: "6px", display: "block" }}>{errors.confirm}</span>}
             </div>
 
-            <button type="submit" className="signup-submit-btn" disabled={loading}>
+            <button type="submit" className="signup-submit-btn" disabled={loading} style={{ marginTop: "1rem" }}>
               {loading ? "Creating your account..." : "Register Now →"}
             </button>
           </form>

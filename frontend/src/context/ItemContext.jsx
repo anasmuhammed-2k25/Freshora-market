@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ItemContext = createContext();
@@ -84,8 +85,10 @@ export const ItemProvider = ({ children }) => {
 
   // ─── CART ACTIONS (SYNCED WITH MONGODB) ──────────────────────────
   
+  const navigate = useNavigate();
+
   const handleAuthError = () => {
-    alert("Please log in to use the shopping cart.");
+    navigate("/login");
   };
 
   const addToCart = async (product) => {

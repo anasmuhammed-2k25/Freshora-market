@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useItems } from "../context/ItemContext";
 
@@ -12,6 +12,14 @@ const Cart = () => {
   const tax = totalPrice * 0.05;
   const delivery = totalPrice > 500 ? 0 : 49;
   const grandTotal = totalPrice + tax + delivery;
+
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   // Function to dynamically load the Razorpay checkout script
   const loadRazorpayScript = () => {

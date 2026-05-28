@@ -6,10 +6,22 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setErrors({});
+    
+    let tempErrors = {};
+    if (!username.trim()) tempErrors.username = "Username is required";
+    if (!password) tempErrors.password = "Password is required";
+    
+    if (Object.keys(tempErrors).length > 0) {
+      setErrors(tempErrors);
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await axios.post("/api/auth/login", { username, password });
@@ -20,7 +32,7 @@ const Login = () => {
       window.dispatchEvent(new Event("authChange"));
       navigate(res.data.isAdmin ? "/admin" : "/");
     } catch {
-      alert("Login failed: Invalid credentials");
+      setErrors({ form: "Login failed: Invalid credentials" });
     } finally {
       setLoading(false);
     }
@@ -56,30 +68,38 @@ const Login = () => {
             <p>Sign in to your account to continue shopping</p>
           </div>
 
-          <form onSubmit={handleLogin} className="login-form">
+          <form onSubmit={handleLogin} className="login-form" noValidate>
+            {errors.form && (
+              <div style={{ padding: "10px", backgroundColor: "#fdecea", color: "#e74c3c", borderRadius: "5px", marginBottom: "15px", fontSize: "0.9rem" }}>
+                {errors.form}
+              </div>
+            )}
+            
             <div className="lf-group">
               <label>Username</label>
               <input
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => { setUsername(e.target.value); setErrors({...errors, username: ""}) }}
                 placeholder="Enter your username"
-                required
                 autoFocus
+                style={{ borderColor: errors.username ? "#e74c3c" : undefined }}
               />
+              {errors.username && <span style={{ color: "#e74c3c", fontSize: "0.85rem", marginTop: "6px", display: "block" }}>{errors.username}</span>}
             </div>
             <div className="lf-group">
               <label>Password</label>
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { setPassword(e.target.value); setErrors({...errors, password: ""}) }}
                 placeholder="••••••••"
-                required
+                style={{ borderColor: errors.password ? "#e74c3c" : undefined }}
               />
+              {errors.password && <span style={{ color: "#e74c3c", fontSize: "0.85rem", marginTop: "6px", display: "block" }}>{errors.password}</span>}
             </div>
 
-            <button type="submit" className="login-submit-btn" disabled={loading}>
+            <button type="submit" className="login-submit-btn" disabled={loading} style={{ marginTop: "1rem" }}>
               {loading ? "Signing in..." : "Sign In →"}
             </button>
           </form>
