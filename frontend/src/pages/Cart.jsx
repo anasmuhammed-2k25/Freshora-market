@@ -70,7 +70,8 @@ const Cart = () => {
             id: pId,
             date: new Date().toISOString(),
             items: cart,
-            total: grandTotal
+            total: grandTotal,
+            username: localStorage.getItem("username")
           };
           const existingOrders = JSON.parse(localStorage.getItem("myOrders") || "[]");
           localStorage.setItem("myOrders", JSON.stringify([...existingOrders, newOrder]));
@@ -104,7 +105,8 @@ const Cart = () => {
             id: pId,
             date: new Date().toISOString(),
             items: cart,
-            total: grandTotal
+            total: grandTotal,
+            username: localStorage.getItem("username")
           };
           const existingOrders = JSON.parse(localStorage.getItem("myOrders") || "[]");
           localStorage.setItem("myOrders", JSON.stringify([...existingOrders, newOrder]));

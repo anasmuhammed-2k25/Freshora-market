@@ -5,8 +5,10 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
+    const currentUsername = localStorage.getItem("username");
     const savedOrders = JSON.parse(localStorage.getItem("myOrders") || "[]");
-    setOrders(savedOrders.reverse());
+    const userOrders = savedOrders.filter(order => order.username === currentUsername);
+    setOrders(userOrders.reverse());
   }, []);
 
   return (
