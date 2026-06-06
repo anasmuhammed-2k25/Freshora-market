@@ -1,6 +1,3 @@
-// seed/seedData.js
-// This file automatically inserts default products into MongoDB when the server starts.
-// If products already exist, it skips seeding so we don't get duplicates.
 
 const Product = require("../models/Product");
 const User = require("../models/User");
@@ -151,10 +148,9 @@ const defaultProducts = [
 
 const seedProducts = async () => {
   try {
-    // Check how many products already exist in the database
     const count = await Product.countDocuments();
 
-    // Only seed if no products exist — preserves any admin changes (adds/deletes)
+   
     if (count === 0) {
       await Product.insertMany(defaultProducts);
       console.log("✅ Database seeded with default products!");
