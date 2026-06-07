@@ -50,6 +50,7 @@ const Signup = () => {
           src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1000&h=1200&fit=crop"
           alt="Fresh organic fruits and vegetables"
           className="signup-visual-bg"
+          loading="lazy"
         />
         <div className="signup-visual-overlay" />
         

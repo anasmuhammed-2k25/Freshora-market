@@ -10,9 +10,9 @@ const seedProducts = async () => {
    
     if (count === 0) {
       await Product.insertMany(defaultProducts);
-      console.log("✅ Database seeded with default products!");
+      console.log(" Database seeded with default products!");
     } else {
-      console.log(`ℹ️ Skipping seed — ${count} products already exist in database.`);
+      console.log(`ℹ Skipping seed — ${count} products already exist in database.`);
     }
 
     const adminCount = await User.countDocuments({ role: "admin" });

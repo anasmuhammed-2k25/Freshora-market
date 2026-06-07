@@ -228,7 +228,7 @@ const Cart = () => {
           {cart.map((item) => (
             <div key={item._id} className="cart-page-row">
               <div className="cart-page-product">
-                <img src={item.image} alt={item.name} className="cart-page-img" />
+                <img src={item.image} alt={item.name} className="cart-page-img" loading="lazy" />
                 <div className="cart-page-info">
                   <h3 className="cart-page-name">{item.name}</h3>
                   <span className="cart-page-category">{item.category}</span>

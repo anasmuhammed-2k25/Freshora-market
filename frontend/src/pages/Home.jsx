@@ -92,7 +92,7 @@ export default function Home() {
       <section className="hs-hero" ref={heroRef}>
         {SLIDES.map((s, i) => (
           <div key={i} className={`hs-slide ${i === slide ? "hs-slide--active" : ""}`}>
-            <img src={s.image} alt={s.title} className="hs-slide-img" />
+            <img src={s.image} alt={s.title} className="hs-slide-img" loading="lazy" />
             <div className="hs-slide-overlay" />
           </div>
         ))}
@@ -135,7 +135,7 @@ export default function Home() {
 
     {/* FRESH FRUITS */}
     <Link to="/products" className="hs-cat-hero-card">
-      <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=800&h=500&fit=crop" alt="Fresh Fruits" />
+      <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=800&h=500&fit=crop" alt="Fresh Fruits" loading="lazy" />
       <div className="hs-cat-hero-overlay">
         
         <h3>Fresh Fruits</h3>
@@ -146,7 +146,7 @@ export default function Home() {
 
     {/* VEGETABLES */}
     <Link to="/products" className="hs-cat-hero-card">
-      <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&h=500&fit=crop" alt="Vegetables" />
+      <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&h=500&fit=crop" alt="Vegetables" loading="lazy" />
       <div className="hs-cat-hero-overlay">
   
         <h3>Vegetables</h3>
@@ -169,7 +169,7 @@ export default function Home() {
         </div>
         <div className="hs-deal-right">
           <div className="hs-deal-img-wrap">
-            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&h=600&fit=crop" alt="Fresh Produce Deal" className="hs-deal-img" />
+            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&h=600&fit=crop" alt="Fresh Produce Deal" className="hs-deal-img" loading="lazy" />
             <div className="hs-deal-badge">BEST<br/>PRICE</div>
           </div>
         </div>
@@ -218,7 +218,7 @@ export default function Home() {
               <h3>Seasonal Picks<br/>Just In 🍋</h3>
               <Link to="/products" className="hs-btn-white">Shop Now →</Link>
             </div>
-            <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=350&fit=crop" alt="Seasonal" className="hs-promo-img" />
+            <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=350&fit=crop" alt="Seasonal" className="hs-promo-img" loading="lazy" />
           </div>
           <div className="hs-promo-card hs-promo-card--gold">
             <div className="hs-promo-text">
@@ -226,7 +226,7 @@ export default function Home() {
               <h3>Family Veggie<br/>Box 🥕</h3>
               <Link to="/products" className="hs-btn-white">Explore →</Link>
             </div>
-            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=350&fit=crop" alt="Bundle" className="hs-promo-img" />
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=350&fit=crop" alt="Bundle" className="hs-promo-img" loading="lazy" />
           </div>
           <div className="hs-promo-card hs-promo-card--dark">
             <div className="hs-promo-text">
@@ -234,7 +234,7 @@ export default function Home() {
               <h3>Exotic Fruits<br/>Collection 🫐</h3>
               <Link to="/products" className="hs-btn-white">Discover →</Link>
             </div>
-            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&h=350&fit=crop" alt="Exotic" className="hs-promo-img" />
+            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&h=350&fit=crop" alt="Exotic" className="hs-promo-img" loading="lazy" />
           </div>
         </div>
       </section>

@@ -57,6 +57,7 @@ const Login = () => {
           src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&fit=crop"
           alt="Fresh produce"
           className="login-visual-bg"
+          loading="lazy"
         />
       </div>
 

@@ -22,6 +22,7 @@ const ProductItem = ({ product }) => {
           src={product.image}
           alt={product.name}
           className="product-image"
+          loading="lazy"
           onError={(e) => {
             e.target.src = "https://via.placeholder.com/300x200?text=" + product.name;
           }}

@@ -288,7 +288,7 @@ const Admin = () => {
                     <tr key={p._id}>
                       <td>
                         <div className="adm-product-cell">
-                          <img src={p.image} alt={p.name} className="adm-product-thumb" />
+                          <img src={p.image} alt={p.name} className="adm-product-thumb" loading="lazy" />
                           <span className="adm-product-name">{p.name}</span>
                         </div>
                       </td>
